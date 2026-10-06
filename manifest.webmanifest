@@ -1,0 +1,10 @@
+{
+  "name": "DNA相補鎖",
+  "short_name": "DNA相補鎖",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f7",
+  "theme_color": "#0f766e",
+  "lang": "ja",
+  "description": "DNA配列から相補鎖・逆相補鎖を計算するローカルWebアプリ"
+}

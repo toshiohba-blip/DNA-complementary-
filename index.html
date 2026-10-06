@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="DNA相補鎖">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <title>DNA相補鎖</title>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>DNA相補鎖</h1>
+      <p>FASTA形式・素のDNA配列に対応</p>
+    </header>
+
+    <section class="card">
+      <label for="sequence">DNA配列</label>
+      <textarea id="sequence" spellcheck="false" autocapitalize="characters"
+        placeholder="例：
+>Sample_01
+ATGCCGTAGCTA"></textarea>
+      <div class="hint">A / T / G / C のみを計算します。FASTAの「&gt;ヘッダー」、改行、空白は自動処理します。</div>
+
+      <div class="buttons">
+        <button id="calculate" class="primary">相補鎖を計算</button>
+        <button id="clear" class="secondary">クリア</button>
+      </div>
+    </section>
+
+    <section id="error" class="error hidden"></section>
+
+    <section id="result" class="card hidden">
+      <div class="result-head">
+        <h2>計算結果</h2>
+        <span id="length" class="badge"></span>
+      </div>
+
+      <label for="cleaned">入力配列（整形後）</label>
+      <textarea id="cleaned" readonly></textarea>
+
+      <label for="complement">相補鎖（3′ → 5′）</label>
+      <textarea id="complement" readonly></textarea>
+      <button class="copy" data-copy="complement">相補鎖をコピー</button>
+
+      <label for="reverseComplement">逆相補鎖（5′ → 3′）</label>
+      <textarea id="reverseComplement" readonly></textarea>
+      <button class="copy" data-copy="reverseComplement">逆相補鎖をコピー</button>
+
+      <div class="stats">
+        <div><span>GC含量</span><strong id="gc"></strong></div>
+        <div><span>AT含量</span><strong id="at"></strong></div>
+      </div>
+
+      <button class="copy all" data-copy="reverseComplement">逆相補鎖をコピー</button>
+    </section>
+
+    <section class="card note">
+      <h2>使い方</h2>
+      <ol>
+        <li>FASTA形式またはDNA配列を貼り付けます。</li>
+        <li>「相補鎖を計算」を押します。</li>
+        <li>必要な配列をコピーして使用します。</li>
+      </ol>
+      <p>配列の計算はこの端末のブラウザ内で行います。</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+  <script src="register-sw.js"></script>
+</body>
+</html>
